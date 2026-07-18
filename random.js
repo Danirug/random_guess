@@ -145,19 +145,3 @@ const productsList = [
 
 
 productsList.forEach(product => console.log(product));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
