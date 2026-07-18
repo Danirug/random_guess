@@ -1,8 +1,3 @@
-
-let num = Math.random() * 10 + 1;
-let randomNumber = Math.floor(num);
-
-
 let attemptsLeft = 5;
 let guessCount = 0;
 
