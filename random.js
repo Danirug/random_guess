@@ -1,76 +1,163 @@
-let attemptsLeft = 5;
-let guessCount = 0;
+// let num = Math.random() * 10 + 1;
 
-function submitGuess() {
-    let guess = parseInt(document.getElementById('guess-input').value);
+// let randomNum = Math.floor(num);
 
-    if (!guess || guess < 1 || guess > 10) {
-        Swal.fire({ icon: 'warning', title: 'Invalid input', text: 'Please enter a number between 1 and 10.' });
-        return;
-    }
-
-    attemptsLeft--;
-    guessCount++;
+// console.log(randomNum);
 
 
-    let dot = document.getElementById('dot-' + guessCount);
-    dot.className = guess === randomNumber ? 'dot correct' : 'dot used';
+// function btnGuessNumberOnAction() {
+//     Swal.fire({
+//         title: "Custom width, padding, color, background.",
+//         width: 600,
+//         padding: "3em",
+//         color: "#716add",
+//         background: "#fff url(/images/trees.png)",
+//         backdrop: `
+//     rgba(0,0,123,0.4)
+//     url("https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3FucmJzNjNlcWZmdXM5MnZxN3JoZHBvcTZkMjZqa3k0c3c3ZTNwNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kfRlTZDvhLCPvOEey8/giphy.gif")
+//     left top
+//     no-repeat
+//   `
+//     });
+// }
 
-    
-    document.getElementById('attempts-left').textContent = attemptsLeft;
+// -----------------------------------------------------------------------
 
-    
-    let hint = guess === randomNumber ? 'Correct!' : guess < randomNumber ? 'Go higher' : 'Go lower';
-    document.getElementById('history').innerHTML =
-        '<div>' + guessCount + '. You guessed ' + guess + ' — ' + hint + '</div>'
-        + document.getElementById('history').innerHTML;
+// let
+// var
+// const
 
-    
-    if (guess === randomNumber) {
-        Swal.fire({ icon: 'success', title: 'Correct!', text: 'You guessed it!' });
-        endGame();
-    } else if (attemptsLeft === 0) {
-        Swal.fire({ icon: 'error', title: 'Game Over', text: 'The number was ' + randomNumber + '.' });
-        endGame();
-    } else {
-        Swal.fire({
-            toast: true,
-            position: 'top',
-            icon: 'info',
-            title: guess < randomNumber ? 'Go higher!' : 'Go lower!',
-            showConfirmButton: false,
-            timer: 1500
-        });
-    }
+// vat vs let ----------------------------------------------
 
-    document.getElementById('guess-input').value = '';
-}
+// {
+//     var studentName = "saman";
+//     let age = 18;
+// }
 
-function endGame() {
-    document.getElementById('submit-btn').disabled = true;
-    document.getElementById('guess-input').disabled = true;
-}
+// console.log(studentName);
+// console.log(age);
 
-function resetGame() {
-    
-    num = Math.random() * 10 + 1;
-    randomNumber = Math.floor(num);
+//  const --------------------------------------------------------------
 
-    attemptsLeft = 5;
-    guessCount = 0;
+// const customerList = [];
 
-    document.getElementById('attempts-left').textContent = 5;
-    document.getElementById('history').innerHTML = '';
-    document.getElementById('guess-input').value = '';
-    document.getElementById('guess-input').disabled = false;
-    document.getElementById('submit-btn').disabled = false;
+// customerList.push("saman");
 
-    for (let i = 1; i <= 5; i++) {
-        document.getElementById('dot-' + i).className = 'dot';
-    }
-}
+// console.log(customerList);
+
+// customerList = "saman"
+
+// console.log(typeof customerList);
+
+//  Array methods -----------------------------------------------------------------
+
+// const customerList = [];
 
 
-document.getElementById('guess-input').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') submitGuess();
-});
+// customerList.push(1);
+// customerList.push(2);
+// customerList.push(3);
+
+// let revAr = customerList.reverse();
+
+// console.log(revAr);
+
+
+
+
+// final watch Line
+
+// let inStockItems = products.filter(product => product.inStock == false);
+
+// let inStockItems = products.filter(
+//     function (product) {
+//         return productFilter(product)
+//     }
+// )
+
+// function productFilter(product) {
+//     return product.inStock == true;
+// }
+
+// console.log(inStockItems);
+
+// Step 01 ------------------------------
+// function getSum(num1,num2){
+//     return num1+num2;
+// }
+
+// getSum(10,20);
+
+// Step 02 ------------------------------------
+
+// let getSum = function (num1, num2){
+//     return num1+num2;
+// }
+
+// console.log(getSum(10,20));
+
+
+// Step 03 --------------------------------------
+
+// let getSum = (num1, num2) => {
+//     return num1+num2;
+// }
+
+// console.log(getSum(10,20));
+
+
+// Step 04 --------------------------------------
+
+// let sample = txtValue =>{
+//     return txtValue;
+// }
+
+// console.log(sample("Hi saman"));
+
+// Step 05 -----------------------------------------
+
+// let getSum = (num1, num2) => num1+num2;
+
+
+// console.log(getSum(10,20));
+
+
+// Step 06 --------------------------------------
+
+// let sample = txtValue => txtValue;
+
+
+// console.log(sample("Hi saman"));
+
+
+const productsList = [
+    { name: "bun", inStock: true },
+    { name: "car", inStock: false },
+    { name: "bat", inStock: true },
+    { name: "van", inStock: false },
+];
+
+
+
+// for(product of productsList){
+//     console.log(product);
+// }
+
+
+productsList.forEach(product => console.log(product));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
