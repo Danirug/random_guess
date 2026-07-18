@@ -10,7 +10,7 @@ function submitGuess() {
     let guess = parseInt(document.getElementById('guess-input').value);
 
     if (!guess || guess < 1 || guess > 10) {
-        document.getElementById('message').textContent = 'Please enter a number between 1 and 10.';
+        Swal.fire({ icon: 'warning', title: 'Invalid input', text: 'Please enter a number between 1 and 10.' });
         return;
     }
 
@@ -32,13 +32,20 @@ function submitGuess() {
 
     
     if (guess === randomNumber) {
-        document.getElementById('message').textContent = 'Correct! You guessed it!';
+        Swal.fire({ icon: 'success', title: 'Correct!', text: 'You guessed it!' });
         endGame();
     } else if (attemptsLeft === 0) {
-        document.getElementById('message').textContent = 'Out of attempts! The number was ' + randomNumber + '.';
+        Swal.fire({ icon: 'error', title: 'Game Over', text: 'The number was ' + randomNumber + '.' });
         endGame();
     } else {
-        document.getElementById('message').textContent = guess < randomNumber ? 'Go higher!' : 'Go lower!';
+        Swal.fire({
+            toast: true,
+            position: 'top',
+            icon: 'info',
+            title: guess < randomNumber ? 'Go higher!' : 'Go lower!',
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 
     document.getElementById('guess-input').value = '';
@@ -58,7 +65,6 @@ function resetGame() {
     guessCount = 0;
 
     document.getElementById('attempts-left').textContent = 5;
-    document.getElementById('message').textContent = '';
     document.getElementById('history').innerHTML = '';
     document.getElementById('guess-input').value = '';
     document.getElementById('guess-input').disabled = false;
